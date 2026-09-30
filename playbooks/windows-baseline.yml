@@ -1,0 +1,11 @@
+---
+- name: Windows baseline
+  hosts: windows
+  tasks:
+    - name: Disable SMBv1 server
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters
+        name: SMB1
+        data: 0
+        type: dword
+        state: present
