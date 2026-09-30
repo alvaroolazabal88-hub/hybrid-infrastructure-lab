@@ -1,0 +1,10 @@
+---
+- name: Linux baseline
+  hosts: linux
+  become: true
+  tasks:
+    - name: Ensure tree is installed
+      ansible.builtin.apt:
+        name: tree
+        state: present
+        update_cache: true
